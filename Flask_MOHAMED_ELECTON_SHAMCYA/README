@@ -1,0 +1,72 @@
+DESCRIPTION
+
+INFO: Dans ma base de donnée il n'y a qu'une seule chambre, qu'un seul client, et deux réservations. Les id des reservations sont 2 et 3
+
+La base de données se nomme 'hotel' et le mot de passe est 'pass'
+
+### 1. Recherche de Chambres Disponibles
+
+     **Endpoint :** `/api/chambres/disponibles`
+
+     Ma logique est que lorsque pour une chambre (id_chambre), les dates sont déjà prises ((Reservation.date_arrivee < date_depart) & (Reservation.date_depart > date_arrivee)) cela veut dire que la chambre n'est pas disponible, sinon, elle est disponible.
+
+     Il faut entrer la date sous le format : "%d %B, %Y"
+
+     Exemple de test:
+
+{
+"date_arrivee": "19 December, 2024",
+"date_depart": "29 December, 2024"
+
+}
+
+### 2. Création de Réservation
+
+     **Endpoint :** `/api/reservations`
+     Lorsque vous entrez la date, il faut l'écrire sous le format : "%d %B, %Y"
+
+     Exemple de test:
+
+{
+"id_client": 10,
+"id_chambre": 6,
+"date_arrivee": "16 June, 2024"
+"date_depart": "26 June, 2024"
+}
+
+### 3. Annulation de Réservation
+
+     **Endpoint :** `/api/reservations/{id}`
+     Exemple de test:
+
+DELETE http://localhost:5000/api/reservations/16
+
+### 4. Gestion des Chambres
+
+- **Ajouter une Chambre :**
+
+       **Endpoint :** `/api/chambres`
+       Exemple de test:
+
+  {
+  "numero": 118,
+  "type": "Standard",
+  "prix": 50
+  }
+
+- **Modifier une Chambre :**
+
+      **Endpoint :** `/api/chambres/{id}`
+       Exemple de test:
+       PUT http://localhost:5000/api/chambres/20
+
+  {
+  "numero": 120,
+  "type": "Deluxe",
+  "prix": 150
+  }
+
+- **Supprimer une Chambre :**
+  **Endpoint :** `/api/chambres/{id}`
+  Exemple de test:
+  DELETE http://localhost:5000/api/chambres/18

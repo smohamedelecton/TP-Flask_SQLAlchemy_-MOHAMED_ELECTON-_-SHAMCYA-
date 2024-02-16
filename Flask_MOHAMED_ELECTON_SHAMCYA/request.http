@@ -1,0 +1,9 @@
+POST http://localhost:5000/api/reservations
+Content-Type: application/json
+
+{
+    "id_client": 1,
+"id_chambre": 1,
+"date_arrivee": "18 June, 2024",
+"date_depart": "28 June, 2024"  
+}
